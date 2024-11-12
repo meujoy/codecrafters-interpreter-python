@@ -28,8 +28,7 @@ def main():
                 print('RIGHT_PAREN ) null')
         print('EOF  null')
     else:
-        pass
-        # print("EOF  null") # Placeholder, remove this line when implementing the scanner
+        print("EOF  null") # Placeholder, remove this line when implementing the scanner
 
 
 if __name__ == "__main__":
