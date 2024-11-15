@@ -40,6 +40,8 @@ def main():
                 print('PLUS + null')
             elif char == '-':
                 print('MINUS - null')
+            elif char == ';':
+                print('SEMICOLON ; null')
         print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
