@@ -56,16 +56,15 @@ def main():
             else:
                 print(f'[line {line_counter}] Error: Unexpected character: {char}')
                 error_flag = 1
-        # print('EOF  null')
+        print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
-        return 65
     
     if error_flag == 0:
-        return 0
+        sys.exit(0)
     elif error_flag == 1:
-        return 65
+        sys.exit(65)
 
 
 if __name__ == "__main__":
-    print(main())
+    main()
