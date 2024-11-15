@@ -21,8 +21,9 @@ def main():
 
     # Uncomment this block to pass the first stage
     error_flag = 0
+    line_counter = 1
     if file_contents:
-        for index,char in enumerate(file_contents):
+        for char in file_contents:
             if char == '(':
                 print('LEFT_PAREN ( null')
             elif char == ')':
@@ -44,14 +45,18 @@ def main():
             elif char == ';':
                 print('SEMICOLON ; null')
             elif char == '$':
-                print(f'[line {index}] Error: Unexpected character: {char}')
+                print(f'[line {line_counter}] Error: Unexpected character: {char}')
                 error_flag = 1
             elif char == '#':
-                print(f'[line {index}] Error: Unexpected character: {char}')
+                print(f'[line {line_counter}] Error: Unexpected character: {char}')
                 error_flag = 1
+            elif char == '\n':
+                print('EOF  null')
+                line_counter += 1
         print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
+        return 0
     
     if error_flag == 0:
         return 0
