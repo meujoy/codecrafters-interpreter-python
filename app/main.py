@@ -53,6 +53,9 @@ def main():
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
+            else:
+                print(f'[line {line_counter}] Error: Unexpected character: {char}')
+                error_flag = 1
         print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
