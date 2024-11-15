@@ -44,17 +44,11 @@ def main():
                 print('MINUS - null')
             elif char == ';':
                 print('SEMICOLON ; null')
-            elif char == '$':
-                print(f'[line {line_counter}] Error: Unexpected character: {char}')
-                error_flag = 1
-            elif char == '#':
-                print(f'[line {line_counter}] Error: Unexpected character: {char}')
-                error_flag = 1
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
             else:
-                print(f'[line {line_counter}] Error: Unexpected character: {char}')
+                print(f'[line {line_counter}] Error: Unexpected character: {char}',file=sys.stderr)
                 error_flag = 1
         # print('EOF  null')
     else:
@@ -62,7 +56,7 @@ def main():
     
     if error_flag == 0:
         sys.exit(0)
-    elif error_flag == 1:
+    else:
         sys.exit(65)
 
 
