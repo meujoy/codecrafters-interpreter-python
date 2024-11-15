@@ -22,8 +22,13 @@ def main():
     # Uncomment this block to pass the first stage
     error_flag = 0
     line_counter = 1
+    equal2_flag = False
     if file_contents:
-        for char in file_contents:
+        for index,char in enumerate(file_contents):
+            if equal2_flag:
+                equal2_flag = False
+                continue
+
             if char == '(':
                 print('LEFT_PAREN ( null')
             elif char == ')':
@@ -44,6 +49,16 @@ def main():
                 print('MINUS - null')
             elif char == ';':
                 print('SEMICOLON ; null')
+            elif char == '=':
+                try:
+                    if file_contents[index+1] == '=':
+                        equal2_flag = True
+                        print('EQUAL_EQUAL == null')
+                    else:
+                        print('EQUAL = null')
+                except IndexError:
+                    print('EQUAL = null')
+
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
