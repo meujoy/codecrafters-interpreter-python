@@ -23,10 +23,14 @@ def main():
     error_flag = 0
     line_counter = 1
     equal2_flag = False
+    bang_equal = False
     if file_contents:
         for index,char in enumerate(file_contents):
             if equal2_flag:
                 equal2_flag = False
+                continue
+            if bang_equal:
+                bang_equal = False
                 continue
 
             if char == '(':
@@ -58,6 +62,15 @@ def main():
                         print('EQUAL = null')
                 except IndexError:
                     print('EQUAL = null')
+            elif char == '!':
+                try:
+                    if file_contents[index+1] == '=':
+                        bang_equal= True
+                        print('BANG_EQUAL != null')
+                    else:
+                        print('BANG ! null')
+                except IndexError:
+                    print('BANG ! null')
 
             elif char == '\n':
                 print('EOF  null')
