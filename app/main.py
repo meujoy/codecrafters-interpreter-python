@@ -22,7 +22,7 @@ def main():
     # Uncomment this block to pass the first stage
     error_flag = 0
     if file_contents:
-        for char,index in file_contents:
+        for index,char in enumerate(file_contents):
             if char == '(':
                 print('LEFT_PAREN ( null')
             elif char == ')':
