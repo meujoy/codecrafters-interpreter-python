@@ -20,8 +20,9 @@ def main():
         file_contents = file.read()
 
     # Uncomment this block to pass the first stage
+    error_flag = 0
     if file_contents:
-        for char in file_contents:
+        for char,index in file_contents:
             if char == '(':
                 print('LEFT_PAREN ( null')
             elif char == ')':
@@ -42,9 +43,20 @@ def main():
                 print('MINUS - null')
             elif char == ';':
                 print('SEMICOLON ; null')
+            elif char == '$':
+                print(f'[line {index}] Error: Unexpected character: {char}')
+                error_flag = 1
+            elif char == '#':
+                print(f'[line {index}] Error: Unexpected character: {char}')
+                error_flag = 1
         print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
+    
+    if error_flag == 0:
+        return 0
+    elif error_flag == 1:
+        return 65
 
 
 if __name__ == "__main__":
