@@ -56,7 +56,7 @@ def main():
         print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
-        return 0
+        return 65
     
     if error_flag == 0:
         return 0
