@@ -38,6 +38,8 @@ def main():
                 print('COMMA , null')
             elif char == '+':
                 print('PLUS + null')
+            elif char == '-':
+                print('MINUS - null')
         print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
