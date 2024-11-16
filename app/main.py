@@ -19,19 +19,29 @@ def main():
     with open(filename) as file:
         file_contents = file.read()
 
+    def peek():
+        return file_contents[index + 1] if index+1 < len(file_contents) else None
+    
+    def advance():
+        nonlocal index
+        index += 1
+
     # Uncomment this block to pass the first stage
-    error_flag = 0
+    error_flag = False
     line_counter = 1
-    equal2_flag = False
-    bang_equal = False
+    index = 0
+    # equal2_flag = False
+    # bang_equal = False
     if file_contents:
-        for index,char in enumerate(file_contents):
-            if equal2_flag:
-                equal2_flag = False
-                continue
-            if bang_equal:
-                bang_equal = False
-                continue
+        while index < len(file_contents):
+            # if equal2_flag:
+            #     equal2_flag = False
+            #     continue
+            # if bang_equal:
+            #     bang_equal = False
+            #     continue
+
+            char = file_contents[index]
 
             if char == '(':
                 print('LEFT_PAREN ( null')
@@ -53,24 +63,52 @@ def main():
                 print('MINUS - null')
             elif char == ';':
                 print('SEMICOLON ; null')
+            # elif char == '=':
+            #     try:
+            #         if file_contents[index+1] == '=':
+            #             equal2_flag = True
+            #             print('EQUAL_EQUAL == null')
+            #         else:
+            #             print('EQUAL = null')
+            #     except IndexError:
+            #         print('EQUAL = null')
+            # elif char == '!':
+            #     try:
+            #         if file_contents[index+1] == '=':
+            #             bang_equal= True
+            #             print('BANG_EQUAL != null')
+            #         else:
+            #             print('BANG ! null')
+            #     except IndexError:
+            #         print('BANG ! null')
+
             elif char == '=':
-                try:
-                    if file_contents[index+1] == '=':
-                        equal2_flag = True
-                        print('EQUAL_EQUAL == null')
-                    else:
-                        print('EQUAL = null')
-                except IndexError:
+                if peek() == '=':
+                    advance()
+                    print('EQUAL_EQUAL == null')
+                else:
                     print('EQUAL = null')
+
             elif char == '!':
-                try:
-                    if file_contents[index+1] == '=':
-                        bang_equal= True
-                        print('BANG_EQUAL != null')
-                    else:
-                        print('BANG ! null')
-                except IndexError:
+                if peek() == '=':
+                    advance()
+                    print('BANG_EQUAL != null')
+                else:
                     print('BANG ! null')
+
+            elif char == '<':
+                if peek() == '=':
+                    advance()
+                    print('LESS_EQUAL <= null')
+                else:
+                    print('LESS < null')
+            
+            elif char == '>':
+                if peek() == '=':
+                    advance()
+                    print('GREATER_EQUAL >= null')
+                else:
+                    print('GREATER > null')
 
             elif char == '\n':
                 print('EOF  null')
@@ -78,11 +116,13 @@ def main():
             else:
                 print(f'[line {line_counter}] Error: Unexpected character: {char}',file=sys.stderr)
                 error_flag = 1
+            
+            index +=1
         print('EOF  null')
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
     
-    if error_flag == 0:
+    if not error_flag:
         sys.exit(0)
     else:
         sys.exit(65)
