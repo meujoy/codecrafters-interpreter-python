@@ -26,62 +26,53 @@ def main():
         nonlocal index
         index += 1
 
+    def skipline():
+        nonlocal index
+        while index < len(file_contents):
+            if file_contents[index] == '\n':
+                return index
+            else:
+                index += 1 
+
     # Uncomment this block to pass the first stage
     error_flag = False
     line_counter = 1
     index = 0
-    # equal2_flag = False
-    # bang_equal = False
+
     if file_contents:
         while index < len(file_contents):
-            # if equal2_flag:
-            #     equal2_flag = False
-            #     continue
-            # if bang_equal:
-            #     bang_equal = False
-            #     continue
-
             char = file_contents[index]
 
             if char == '(':
                 print('LEFT_PAREN ( null')
+            
             elif char == ')':
                 print('RIGHT_PAREN ) null')
+            
             elif char == '{':
                 print('LEFT_BRACE { null')
+            
             elif char == '}':
                 print('RIGHT_BRACE } null')
+            
             elif char == '*':
                 print('STAR * null')
+            
             elif char == '.':
                 print('DOT . null')
+            
             elif char == ',':
                 print('COMMA , null')
+            
             elif char == '+':
                 print('PLUS + null')
+            
             elif char == '-':
                 print('MINUS - null')
+            
             elif char == ';':
                 print('SEMICOLON ; null')
-            # elif char == '=':
-            #     try:
-            #         if file_contents[index+1] == '=':
-            #             equal2_flag = True
-            #             print('EQUAL_EQUAL == null')
-            #         else:
-            #             print('EQUAL = null')
-            #     except IndexError:
-            #         print('EQUAL = null')
-            # elif char == '!':
-            #     try:
-            #         if file_contents[index+1] == '=':
-            #             bang_equal= True
-            #             print('BANG_EQUAL != null')
-            #         else:
-            #             print('BANG ! null')
-            #     except IndexError:
-            #         print('BANG ! null')
-
+            
             elif char == '=':
                 if peek() == '=':
                     advance()
@@ -109,7 +100,17 @@ def main():
                     print('GREATER_EQUAL >= null')
                 else:
                     print('GREATER > null')
-
+            
+            elif char == '/':
+                if peek() == '/':
+                    index = skipline()
+                    if not index:
+                        break
+                    char = file_contents[index]
+                    continue
+                else:
+                    print('SLASH / null')
+    
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
