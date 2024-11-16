@@ -110,6 +110,12 @@ def main():
                     continue
                 else:
                     print('SLASH / null')
+            
+            elif char == ' ':
+                pass
+
+            elif char == '\t':
+                pass
     
             elif char == '\n':
                 print('EOF  null')
