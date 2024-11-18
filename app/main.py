@@ -128,6 +128,19 @@ def main():
                     continue
                 else:
                     print('SLASH / null')
+            
+            elif char == '"':
+                word = ""
+                advance()
+                while index < len(file_contents):
+                    char = file_contents[index]
+                    if char == '"':
+                        break
+                    word += char
+                    index += 1
+                print(f'STRING "{word}" {word}')
+                    
+
     
             elif char == '\n':
                 print('EOF  null')
