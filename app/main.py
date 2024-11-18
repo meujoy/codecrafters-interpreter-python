@@ -34,6 +34,20 @@ def main():
             else:
                 index += 1 
 
+    def skipspaces():
+        nonlocal index
+        nonlocal line_counter
+
+        while index < len(file_contents) and (file_contents[index] == ' ' or file_contents[index] == '\t'):
+            index +=1
+        
+        if index < len(file_contents) and file_contents[index] == '\n':
+            index +=1
+            line_counter +=1
+            skipspaces()
+            
+
+
     # Uncomment this block to pass the first stage
     error_flag = False
     line_counter = 1
@@ -41,7 +55,11 @@ def main():
 
     if file_contents:
         while index < len(file_contents):
-            char = file_contents[index]
+            skipspaces()
+            if index < len(file_contents):
+                char = file_contents[index]
+            else:
+                break
 
             if char == '(':
                 print('LEFT_PAREN ( null')
@@ -110,16 +128,11 @@ def main():
                     continue
                 else:
                     print('SLASH / null')
-            
-            elif char == ' ':
-                pass
-
-            elif char == '\t':
-                pass
     
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
+
             else:
                 print(f'[line {line_counter}] Error: Unexpected character: {char}',file=sys.stderr)
                 error_flag = 1
