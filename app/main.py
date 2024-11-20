@@ -155,7 +155,7 @@ def main():
                 if float(num).is_integer():
                     print(f'NUMBER {num} {num +".0"}')
                 else:
-                    print(f'NUMBER {num} {num}')
+                    print(f'NUMBER {num} {float(num)}')
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
