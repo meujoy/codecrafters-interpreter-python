@@ -139,7 +139,8 @@ def main():
                         break 
                     word += char
                     index += 1
-                error_flag =True
+                if index > len(file_contents):
+                    error_flag =True
                 
                     
 
