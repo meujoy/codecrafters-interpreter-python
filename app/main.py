@@ -142,7 +142,20 @@ def main():
                 if index >= len(file_contents):
                     print(f"[line {line_counter}] Error: Unterminated string.",file=sys.stderr)
                     error_flag = True
-                
+            
+            elif char.isnumeric():
+                num = ''
+                while index < len(file_contents):
+                    char = file_contents[index]
+                    if char.isnumeric() or char == '.':
+                        num += char
+                        index += 1
+                    else:
+                        break
+                if float(num).is_integer():
+                    print(f'NUMBER {num} {num +".0"}')
+                else:
+                    print(f'NUMBER {num} {num}')
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
