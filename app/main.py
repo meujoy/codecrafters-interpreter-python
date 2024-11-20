@@ -60,7 +60,7 @@ def main():
                 char = file_contents[index]
             else:
                 break
-
+            
             if char == '(':
                 print('LEFT_PAREN ( null')
             
@@ -151,11 +151,13 @@ def main():
                         num += char
                         index += 1
                     else:
+                        if float(num).is_integer():
+                            print(f'NUMBER {num} {float(num)}')
+                        elif num.isnumeric():
+                            print(f'NUMBER {num} {float(num)}')
                         break
-                if float(num).is_integer():
-                    print(f'NUMBER {num} {float(num)}')
-                else:
-                    print(f'NUMBER {num} {float(num)}')
+                continue
+        
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
