@@ -49,7 +49,7 @@ def main():
     def printnum(num):
         if float(num).is_integer():
             print(f'NUMBER {num} {float(num)}')
-        elif num.isnumeric():
+        else:
             print(f'NUMBER {num} {float(num)}')
             
 
