@@ -45,6 +45,12 @@ def main():
             index +=1
             line_counter +=1
             skipspaces()
+    
+    def printnum(num):
+        if float(num).is_integer():
+            print(f'NUMBER {num} {float(num)}')
+        elif num.isnumeric():
+            print(f'NUMBER {num} {float(num)}')
             
 
 
@@ -151,11 +157,10 @@ def main():
                         num += char
                         index += 1
                     else:
-                        if float(num).is_integer():
-                            print(f'NUMBER {num} {float(num)}')
-                        elif num.isnumeric():
-                            print(f'NUMBER {num} {float(num)}')
+                        printnum(num)
                         break
+                if index == len(file_contents):
+                    printnum(num)
                 continue
         
             elif char == '\n':
