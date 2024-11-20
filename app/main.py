@@ -139,19 +139,16 @@ def main():
                         break 
                     word += char
                     index += 1
-                if index > len(file_contents):
-                    error_flag =True
+                if index >= len(file_contents):
+                    error_flag = True
                 
-                    
-
-    
             elif char == '\n':
                 print('EOF  null')
                 line_counter += 1
 
             else:
                 print(f'[line {line_counter}] Error: Unexpected character: {char}',file=sys.stderr)
-                error_flag = 1
+                error_flag = True
             
             index +=1
         print('EOF  null')
