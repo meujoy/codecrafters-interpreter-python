@@ -153,7 +153,7 @@ def main():
                     else:
                         break
                 if float(num).is_integer():
-                    print(f'NUMBER {num} {num +".0"}')
+                    print(f'NUMBER {num} {float(num)}')
                 else:
                     print(f'NUMBER {num} {float(num)}')
             elif char == '\n':
