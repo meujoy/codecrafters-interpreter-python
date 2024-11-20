@@ -140,7 +140,7 @@ def main():
                     word += char
                     index += 1
                 if index >= len(file_contents):
-                    print(f"line[{line_counter}] Error: Unterminated string.")
+                    print(f"line[{line_counter}] Error: Unterminated string.",file=sys.stderr)
                     error_flag = True
                 
             elif char == '\n':
