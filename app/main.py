@@ -135,10 +135,12 @@ def main():
                 while index < len(file_contents):
                     char = file_contents[index]
                     if char == '"':
-                        break
+                        print(f'STRING "{word}" {word}')
+                        break 
                     word += char
                     index += 1
-                print(f'STRING "{word}" {word}')
+                error_flag =True
+                
                     
 
     
