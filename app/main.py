@@ -175,6 +175,7 @@ def main():
                         break        
                 if index == len(file_contents):
                     print(f'IDENTIFIER {identifer} null')
+                continue
         
             elif char == '\n':
                 print('EOF  null')
