@@ -19,6 +19,25 @@ def main():
     with open(filename) as file:
         file_contents = file.read()
 
+    keywords = [
+    "and",
+    "class",
+    "else",
+    "false",
+    "for",
+    "fun",
+    "if",
+    "nil",
+    "or",
+    "print",
+    "return",
+    "super",
+    "this",
+    "true",
+    "var",
+    "while"
+    ]
+
     def peek():
         return file_contents[index + 1] if index+1 < len(file_contents) else None
     
@@ -171,10 +190,16 @@ def main():
                         identifer += char
                         index += 1
                     else:
-                        print(f'IDENTIFIER {identifer} null')
+                        if identifer not in keywords:
+                            print(f'IDENTIFIER {identifer} null')
+                        else:
+                            print(f'{identifer.upper()} {identifer} null')
                         break        
                 if index == len(file_contents):
-                    print(f'IDENTIFIER {identifer} null')
+                        if identifer not in keywords:
+                            print(f'IDENTIFIER {identifer} null')
+                        else:
+                            print(f'{identifer.upper()} {identifer} null')
                 continue
         
             elif char == '\n':
