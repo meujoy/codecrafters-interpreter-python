@@ -162,6 +162,19 @@ def main():
                 if index == len(file_contents):
                     printnum(num)
                 continue
+
+            elif char.isalpha() or char =='_':
+                identifer = ''
+                while index < len(file_contents):
+                    char = file_contents[index]
+                    if char.isalpha() or char =='_':
+                        identifer += char
+                        index += 1
+                    else:
+                        print(f'IDENTIFIER {identifer} null')
+                        break        
+                if index == len(file_contents):
+                    print(f'IDENTIFIER {identifer} null')
         
             elif char == '\n':
                 print('EOF  null')
