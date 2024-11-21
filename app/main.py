@@ -167,7 +167,7 @@ def main():
                 identifer = ''
                 while index < len(file_contents):
                     char = file_contents[index]
-                    if char.isalpha() or char =='_':
+                    if char.isalpha() or char =='_' or char.isnumeric():
                         identifer += char
                         index += 1
                     else:
